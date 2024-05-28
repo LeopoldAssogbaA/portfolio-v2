@@ -8,6 +8,5 @@ export const LandingPageSection = styled.section`
   height: 200vh;
   display: grid;
   height: 200vh;
-  overflow: hidden;
 `;
 

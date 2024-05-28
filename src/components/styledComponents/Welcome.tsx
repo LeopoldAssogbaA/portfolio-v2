@@ -19,6 +19,7 @@ export const Welcome = styled.section`
       inherits: true;
     }
 
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -48,4 +49,59 @@ export const Welcome = styled.section`
     --map: radial-gradient(circle at calc(var(--i0) * 100%) calc(var(--j0) * 100%),
       #777 var(--gradient-start),
       #000 var(--gradient-end));
+
+      
+      .center {
+        z-index: 1000;
+        position: absolute;
+        left: 50%;
+        top: 52%;
+        opacity: 0;
+        margin-left: -30px;
+        margin-top: -15px;
+      }
+
+      
+      .mouse-wheel {
+        z-index: 1000;
+        width: 30px;
+        height: 60px;
+        border-radius: 20px;
+        background-color: transparent;
+        opacity: O;
+        border: 3px solid #52b600;
+        &:after {
+          z-index: 1000;
+          content: "";
+          width: 4px;
+          height: 10px;
+          position: absolute;
+          border-radius: 50px;
+          left: 50%;
+          top: 10px;
+          background: #52b600;
+          border-top: 3px solid #52b600;
+          transform: translateX(-50%);
+          -webkit-transform: translateX(-50%);
+          animation: scroll-wheel 1s infinite;
+          -webkit-animation: scroll-wheel 1s infinite;
+          animation-delay: 0s;
+          -webkit-animation-delay: 0s;
+        }
+      }
+      
+      @keyframes scroll-wheel {
+        0% {
+          top: 10px;
+          height: 10px; 
+        }
+        50% {
+          top: 20px;
+          height: 5px; 
+        }
+        100% {
+          top: 10px;
+          height: 10px; 
+        }
+      } 
 `;
