@@ -1,0 +1,27 @@
+html {
+  margin: 0;
+  cursor: none;
+}
+body {
+  margin: 0;
+}
+:root:has(li:hover) .cursor {
+  width: 50px;
+  height: 50px;
+  background-color: #52b600;
+}
+:root:has(a:hover) .cursor {
+  width: 50px;
+  height: 50px;
+  background-color: #52b600;
+}
+:root:has(div.navTrigger:hover) .cursor {
+  width: 50px;
+  height: 50px;
+  background-color: #52b600;
+}
+
+.cursor {
+  transition: width height 0.2s ease-in-out;
+}
+

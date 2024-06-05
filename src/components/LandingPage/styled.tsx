@@ -1,6 +1,53 @@
 import styled from "styled-components";
 
-export const Welcome = styled.section`
+export const LandingPageContainer = styled.section`
+  background: transparent;
+  width: 100vw;
+  height: 200vh;
+  display: grid;
+  height: 200vh;
+`;
+
+export const NameContainer = styled.div`
+color: #52b600;
+font-weight: 800;
+width: auto;
+height: auto;
+position: absolute;
+top: 25%;
+left: 50%;
+transform: translate(-50%, -50%);
+z-index: 1;
+margin: 0;
+text-align: center;
+`;
+
+export const Name = styled.h1`
+color: #52b600;
+font-weight: 800;
+font-size: 3em;
+clip-path: inset(0 0 0 100%);
+mix-blend-mode: difference;
+width: auto;
+height: auto;
+line-height: 1.4em;
+z-index: 100;
+margin: 0;
+`;
+
+export const ScrollTriggerEl = styled.a`
+position: fixed;
+top: 45.5%;
+left: 63.8%;
+background: transparent;
+border-radius: 50px;
+z-index: 1000;
+width: 80px;
+height: 80px;
+`;
+
+
+export const LandingPage = styled.section`
     @property --i0 {
       syntax: "<number>";
       initial-value: 0;
@@ -42,8 +89,6 @@ export const Welcome = styled.section`
       grid-row: 1;
     }
 
-    /* --gradient-start: 7.5%;
-    --gradient-end: 30%; */
     --gradient-start: 17%;
     --gradient-end: 100%;
     --map: radial-gradient(circle at calc(var(--i0) * 100%) calc(var(--j0) * 100%),
@@ -105,3 +150,38 @@ export const Welcome = styled.section`
         }
       } 
 `;
+
+export const Halftone = styled.div`
+place-self: stretch;
+position: relative;
+z-index: 1;
+background: var(--map,
+    linear-gradient(calc(var(--k0) * 360deg), #777 9%, #000)),
+  var(--pattern, radial-gradient(closest-corner, #888, #000) 0 / 1em 1em round);
+background-blend-mode: screen;
+mix-blend-mode: multiply;
+filter: contrast(20);
+`;
+
+
+
+export const Work = styled.h2`
+color: #52b600;
+font-weight: 600;
+font-size: 2em;
+mix-blend-mode: difference;
+width: auto;
+height: auto;
+line-height: 1.2em;
+transform: none;
+z-index: 4;
+margin: 0px;
+clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+ .char {
+  transform: translateY(115px);
+  transition: transform .5s;
+ }
+`;
+
+
+

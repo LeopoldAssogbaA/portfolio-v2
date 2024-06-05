@@ -1,10 +1,14 @@
 import React from 'react';
-import MyComponent from '../components/LandingPage';
+import localFont from 'next/font/local'
+import PortfolioContainer from '../components';
+
+const myFont = localFont({ src: '../fonts/Moon2.0-Regular.otf' })
+
 
 const Home = () => {
   return (
-    <main>
-      <MyComponent />
+    <main style={{ fontFamily: myFont.style.fontFamily }}>
+      <PortfolioContainer />
     </main>
   );
 }

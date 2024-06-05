@@ -1,18 +1,24 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useGSAP } from '@gsap/react';
-import Cursor from './styledComponents/Cursor';
+import { ScrollTrigger } from 'gsap/all';
 import gsap from 'gsap';
 import styled from 'styled-components';
-import { ScrollTrigger } from 'gsap/all';
-import { Name, NameContainer } from './styledComponents/Name';
-import { ScrollTriggerEl } from './styledComponents/ScrollTrigger';
-import { Halftone } from './styledComponents/HalfTone';
-import { Welcome } from './styledComponents/Welcome';
-import { Work } from './styledComponents/Work';
-import Menu from './Menu';
-import { LandingPageSection } from './styledComponents/LandingPageScroll';
+
+import Cursor from './Shared/Cursor';
+import Menu from './Shared/Menu';
+import About from './About';
+import SplitType from 'split-type'
+import {
+  Halftone,
+  LandingPageContainer,
+  Name,
+  NameContainer,
+  ScrollTriggerEl,
+  LandingPage,
+  Work
+} from './LandingPage/styled';
 
 
 export const Char = styled.span`
@@ -23,15 +29,12 @@ export const Char = styled.span`
   transform: translate(0px, 0px);
 `;
 
-
 gsap.registerPlugin(ScrollTrigger);
 
-const MyComponent: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
+const PortfolioContainer: React.FC = () => {
   const revealTimeline = gsap.timeline();
   const heartBeatTimeline = gsap.timeline();
   const heartBeatTimelineMoove = gsap.timeline();
-  const workTimeline = gsap.timeline();
   const [init, setInit] = useState(false);
 
 
@@ -62,7 +65,7 @@ const MyComponent: React.FC = () => {
       ease: "elastic",
     });
 
-  
+
     revealTimeline.to(".landingPage", {
       "--background": "#52b600",
       "--gradient-start": "4em",
@@ -137,10 +140,8 @@ const MyComponent: React.FC = () => {
     const name = document.querySelector('.name');
     const landingPage = document.querySelector('.landingPageScroll');
 
-
     gsap.to(name, {
       top: '40px',
-      // left: '50%',
       position: 'fixed',
       scale: '0.75',
       scrollTrigger: {
@@ -150,11 +151,13 @@ const MyComponent: React.FC = () => {
         scrub: true,
       }
     });
+
     gsap.fromTo(
       ".mouse-wheel",
       { opacity: 1, y: 0 },
       {
-        opacity: 0, y: -50, scrollTrigger: {
+        opacity: 0, y: -50,
+        scrollTrigger: {
           trigger: landingPage,
           start: 'top+=25% center',
           end: 'top+=50% bottom-=25%',
@@ -169,7 +172,7 @@ const MyComponent: React.FC = () => {
       scrollTrigger: {
         trigger: landingPage,
         start: 'top+=37.5% center',
-        end: 'top+=50% bottom-=37.5%%',
+        end: 'top+=50% bottom-=37.5%',
         scrub: true,
       }
     });
@@ -191,8 +194,11 @@ const MyComponent: React.FC = () => {
     });
 
     heartBeatTimelineMoove.to(".landingPage", {
-      "--j0": "0.03",
-      "--i0": "0.03",
+      "--j0": "0.025",
+      "--i0": "0.025",
+      "--gradient-start": "0.9%",
+      "--gradient-end": "3%",
+
       duration: .4,
       ease: "elastic.out(1,0.2)",
       onComplete: () => {
@@ -201,6 +207,10 @@ const MyComponent: React.FC = () => {
           top: "46%",
           duration: 0,
         });
+        gsap.to(".scroll-trigger", {
+          display: 'none',
+        });
+
         gsap.fromTo(
           ".mouse-wheel",
           { opacity: 0, y: -25 },
@@ -208,29 +218,90 @@ const MyComponent: React.FC = () => {
             opacity: 1, y: 0, duration: .8, ease: "power1.in"
           }
         );
+        setInit(true);
       }
-    });
-
-    heartBeatTimelineMoove.to(".landingPage", {
-      duration: .8,
-      delay: .2,
-      ease: "circ.inOut",
-      "--gradient-end": "10%",
-      "--gradient-start": "2%",
-
     });
   }
 
+  // RESET PAGE TO TOP ON LOAD
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    const isBrowser = () => typeof window !== 'undefined';
+    if (!isBrowser()) return;
+    window.scrollTo({ top: 0 });
+  }, []);
 
 
+  useGSAP(() => {
+    const about = document.querySelector('.about');
+    if (!about) return;
+    const text = new SplitType(about as HTMLElement, { types: 'chars' });
+    gsap.fromTo(text.chars,
+      {
+        color: "#0000",
+      },
+      {
+        color: "#52b600",
+        duration: 0.3,
+        stagger: 0.02,
+        scrollTrigger: {
+          trigger: ".landingPageScroll",
+          start: 'top+=37.5% center',
+          end: 'top+=50% bottom-=37.5%',
+          scrub: true,
+          // markers: true,
+          toggleActions: 'play play reverse reverse'
+        }
+      });
+  }, []);
+
+  useGSAP(() => {
+    const about = document.querySelector('.about2');
+    if (!about) return;
+    const text = new SplitType(about as HTMLElement, { types: 'chars' });
+    gsap.fromTo(text.chars,
+      {
+        color: "#0000",
+      },
+      {
+        color: "#52b600",
+        duration: 0.3,
+        stagger: 0.02,
+        scrollTrigger: {
+          trigger: ".landingPageScroll",
+          start: 'top+=50% center+=12.5%',
+          end: 'top+=75% bottom-=25%',
+          scrub: true,
+          // markers: true,
+          toggleActions: 'play play reverse reverse'
+        }
+      });
+  }, []);
+
+  useGSAP(() => {
+    const about = document.querySelector('.about');
+    const about2 = document.querySelector('.about2');
+    if (!about || !about2) return;
+
+    gsap.to([about, about2],
+      {
+        scale: 0,
+        transform: "perspective(1000px) translateZ(-500px)",
+        opacity: 0,
+        scrollTrigger: {
+          trigger: ".landingPageScroll",
+          start: 'top+=75% center+=12.5%',
+          end: 'top+=100% bottom-=25%',
+          scrub: true,
+          markers: true,
+          toggleActions: 'play play reverse reverse'
+        }
+      });
+  });
 
   return (
     <>
-      <LandingPageSection className='landingPageScroll'>
-        <Welcome ref={sectionRef} className="landingPage">
+      <LandingPageContainer className='landingPageScroll'>
+        <LandingPage className="landingPage">
           <Cursor />
           <Halftone className="halftone" />
           <NameContainer className='name'>
@@ -238,20 +309,22 @@ const MyComponent: React.FC = () => {
               Léopold Assogba
             </Name>
             <Work className='work'>
-              <Char className="char">D</Char><Char className="char">é</Char><Char className="char">v</Char><Char className="char">e</Char><Char className="char">l</Char><Char className="char">o</Char><Char className="char">p</Char><Char className="char">p</Char><Char className="char">e</Char><Char className="char">u</Char><Char className="char">r</Char> <Char className="char">F</Char><Char className="char">u</Char><Char className="char">l</Char><Char className="char">l</Char><Char className="char">S</Char><Char className="char">t</Char><Char className="char">a</Char><Char className="char">c</Char><Char className="char">k</Char> <Char className="char">J</Char><Char className="char">S</Char><Char className="char">/</Char><Char className="char">T</Char><Char className="char">S</Char>
+              {/* TODO: split char with split-type */}
+              <Char className="char">D</Char><Char className="char">é</Char><Char className="char">v</Char><Char className="char">e</Char><Char className="char">l</Char><Char className="char">o</Char><Char className="char">p</Char><Char className="char">p</Char><Char className="char">e</Char><Char className="char">u</Char><Char className="char">r</Char> <Char className="char">F</Char><Char className="char">u</Char><Char className="char">l</Char><Char className="char">l</Char><Char className="char">s</Char><Char className="char">t</Char><Char className="char">a</Char><Char className="char">c</Char><Char className="char">k</Char> <Char className="char">J</Char><Char className="char">s</Char><Char className="char">/</Char><Char className="char">T</Char><Char className="char">s</Char>
             </Work>
           </NameContainer>
-          <Menu />
-          <ScrollTriggerEl className='ScrollTrigger' onClick={() => initPage()} />
+          <Menu init={init} />
+          <ScrollTriggerEl className='scroll-trigger' onClick={() => initPage()} />
           <div className="mouse-wheel center">
             <div className="mouse">
               <div className="scroll-wheel"></div>
             </div>
           </div>
-        </Welcome>
-      </LandingPageSection>
+          <About />
+        </LandingPage>
+      </LandingPageContainer>
     </>
   );
 }
 
-export default MyComponent;
+export default PortfolioContainer;

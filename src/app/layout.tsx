@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../styles/globals.css";
 import StyledComponentsRegistry from "../lib/registry";
-import localFont from 'next/font/local'
-
-const myFont = localFont({ src: './fonts/Moon2.0-Regular.otf' })
-
-
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" style={{ fontFamily: myFont.style.fontFamily }}>
+    <html lang="en">
       <body>
         <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
       </body>
