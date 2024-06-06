@@ -5,9 +5,9 @@ import styled from 'styled-components';
 
 const MainNav = styled.nav`
   z-index: 999;
-  margin: 0;
+  margin: 0px;
   position: fixed;
-  top: 120px;
+  top: 0px;
   left: 20px;
   ul {
     margin: 0;
@@ -103,20 +103,20 @@ const Menu: React.FC<{ init: boolean }> = ({ init }) => {
     if (!init) return;
     gsap.fromTo(".menu-step",
       {
-        y: -35,
+        y: -55,
         rotateX: 360,
       },
       {
         y: 0,
         rotateX: 0,
-        delay: .2,
+        delay: .37,
         opacity: 1,
         duration: .08,
-        stagger: .05,
+        stagger: .055,
       });
 
     gsap.to(".current-step", {
-      delay: .5,
+      delay: .8,
       duration: .1,
       scale: 1.2,
       paddingLeft: "40px",

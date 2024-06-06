@@ -142,7 +142,7 @@ const LandingPage: React.FC<{ setInit: (init: boolean) => void, init: boolean }>
         trigger: landingPage,
         start: 'top+=10% center',
         end: 'top+=20% bottom-=25%',
-        markers: true,
+        // markers: true,
         scrub: true,
       },
       onComplete: () => {
@@ -161,6 +161,27 @@ const LandingPage: React.FC<{ setInit: (init: boolean) => void, init: boolean }>
           trigger: landingPage,
           start: 'top+=10% center',
           end: 'top+=20% bottom-=25%',
+          scrub: true,
+        }
+      }
+    );
+    gsap.fromTo(
+      ".landing-page",
+      {
+        "--j0": "-0.01",
+        "--i0": "1",
+        "--gradient-start": "5%",
+        "--gradient-end": "22.2%",
+       },
+      {
+        "--j0": "0.5",
+      "--i0": "1",
+      "--gradient-start": "1%",
+      "--gradient-end": "5%",
+        scrollTrigger: {
+          trigger: landingPage,
+          start: 'top top',
+          end: 'bottom bottom',
           scrub: true,
         }
       }
@@ -204,12 +225,11 @@ const LandingPage: React.FC<{ setInit: (init: boolean) => void, init: boolean }>
 
     heartBeatTimelineMoove.to(".landing-page", {
       "--j0": "0.025",
-      "--i0": "0.025",
+      "--i0": "0.1",
       "--gradient-start": "0.9%",
       "--gradient-end": "3%",
-
-      duration: .4,
-      ease: "elastic.out(1,0.2)",
+      duration: .3,
+      ease: "back.in(4)",
       onComplete: () => {
         gsap.to(".mouse-wheel", {
           zIndex: 1000,
@@ -229,6 +249,15 @@ const LandingPage: React.FC<{ setInit: (init: boolean) => void, init: boolean }>
         );
         setInit(true);
       }
+    });
+
+    heartBeatTimelineMoove.to(".landing-page", {
+      "--j0": "-0.01",
+      "--i0": "1",
+      "--gradient-start": "5%",
+      "--gradient-end": "22.2%",
+      duration: .5,
+      ease: "back.out(1)",
     });
   }
 

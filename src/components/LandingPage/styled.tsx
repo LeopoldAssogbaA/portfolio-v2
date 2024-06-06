@@ -31,7 +31,7 @@ export const ScrollTriggerEl = styled.a`
 position: fixed;
 top: 45.5%;
 left: 63.8%;
-background: red;
+background: transparent;
 border-radius: 50px;
 z-index: 9999;
 width: 80px;
