@@ -1,13 +1,5 @@
 import styled from "styled-components";
 
-export const LandingPageContainer = styled.section`
-  background: transparent;
-  width: 100vw;
-  height: 200vh;
-  display: grid;
-  height: 200vh;
-`;
-
 export const NameContainer = styled.div`
 color: #52b600;
 font-weight: 800;
@@ -39,15 +31,15 @@ export const ScrollTriggerEl = styled.a`
 position: fixed;
 top: 45.5%;
 left: 63.8%;
-background: transparent;
+background: red;
 border-radius: 50px;
-z-index: 1000;
+z-index: 9999;
 width: 80px;
 height: 80px;
 `;
 
 
-export const LandingPage = styled.section`
+export const LandingPageContainer = styled.section`
     @property --i0 {
       syntax: "<number>";
       initial-value: 0;
@@ -176,6 +168,7 @@ line-height: 1.2em;
 transform: none;
 z-index: 4;
 margin: 0px;
+opacity: 0;
 clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
  .char {
   transform: translateY(115px);
