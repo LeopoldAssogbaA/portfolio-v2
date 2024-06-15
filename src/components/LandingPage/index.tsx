@@ -211,6 +211,9 @@ const LandingPage: React.FC<{ setInit: (init: boolean) => void, init: boolean }>
     gsap.to("html", {
       overflow: "auto",
     });
+    gsap.to('div.page-transition-container-enter', {
+      zIndex: 2,
+    });
 
     heartBeatTimelineMoove.to(".landing-page", {
       "--gradient-end": "2%",
