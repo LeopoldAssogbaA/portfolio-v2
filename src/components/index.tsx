@@ -9,6 +9,7 @@ import LandingPage from './LandingPage';
 
 import { MainContainer } from './styled';
 import PageTransition from './Shared/PageTransition';
+import School from './School';
 
 const PortfolioContainer: React.FC = () => {
   const [init, setInit] = useState(false);
@@ -20,6 +21,7 @@ const PortfolioContainer: React.FC = () => {
       <LandingPage setInit={setInit} init={init} />
       <About />
       <PageTransition />
+      <School />
     </MainContainer>
   );
 }
