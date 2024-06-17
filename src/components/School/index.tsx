@@ -58,10 +58,10 @@ const School = () => {
       });
     gsap.fromTo(".school-two", 
     {
-      transform: "translate(-50%,0) rotate3d(1, 0, 0, 90deg)",
+      transform: "translate(-50%, 0) rotate3d(1, 0, 0, 90deg)",
     },
     {
-      transform: "translate(-50%,0) rotate3d(1, 0, 0, 0deg)",
+      transform: "translate(-50%, 0) rotate3d(1, 0, 0, 0deg)",
       scrollTrigger: {
         trigger: ".main-container",
         start: "top+=55% bottom-=37.5%",
