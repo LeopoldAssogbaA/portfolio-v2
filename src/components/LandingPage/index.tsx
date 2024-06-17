@@ -48,8 +48,12 @@ const LandingPage: React.FC<{ setInit: (init: boolean) => void, init: boolean }>
     //   overflow: "hidden",
     // });
 
-    gsap.to(".name", {
-      clipPath: "inset(0% 0% 0% -100%)",
+    gsap.fromTo(".name", 
+    {
+      clipPath: "inset(0% 0% 0% 100%)",
+    },
+    {
+      clipPath: "inset(0% 0% 0% 0%)",
       delay: 0.8,
       duration: 1.2,
       ease: "elastic",

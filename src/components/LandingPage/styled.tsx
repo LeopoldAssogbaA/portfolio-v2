@@ -18,7 +18,6 @@ export const Name = styled.h1`
 color: #52b600;
 font-weight: 800;
 font-size: 3em;
-clip-path: inset(0 0 0 100%);
 mix-blend-mode: difference;
 width: auto;
 height: auto;
