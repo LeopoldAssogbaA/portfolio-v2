@@ -69,6 +69,8 @@ const LandingPage: React.FC<{ setInit: (init: boolean) => void, init: boolean }>
     revealTimeline.fromTo(".landing-page", 
     {
       "background": "#000",
+      "--gradient-start": "17%",
+      "--gradient-end": "100%",
     },
     {
       "background": "#52b600",

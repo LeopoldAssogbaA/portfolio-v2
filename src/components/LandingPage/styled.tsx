@@ -56,7 +56,6 @@ export const LandingPageContainer = styled.section`
       initial-value: 0;
       inherits: true;
     }
-
     position: fixed;
     top: 0;
     left: 0;
@@ -69,7 +68,7 @@ export const LandingPageContainer = styled.section`
     --j0: 0.15;
     --k0: 0;
     // --background: #52b600;
-    background: #000;
+    background: #52b600;
     display: grid;
     height: 200vh;
     // background: var(--background);
@@ -81,8 +80,8 @@ export const LandingPageContainer = styled.section`
       grid-row: 1;
     }
 
-    --gradient-start: 17%;
-    --gradient-end: 100%;
+    --gradient-start: 0%;
+    --gradient-end: 0%;
     --map: radial-gradient(circle at calc(var(--i0) * 100%) calc(var(--j0) * 100%),
       #777 var(--gradient-start),
       #000 var(--gradient-end));
