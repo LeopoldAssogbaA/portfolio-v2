@@ -15,7 +15,7 @@ const PortfolioContainer: React.FC = () => {
   const [init, setInit] = useState(false);
 
   return (
-    <MainContainer className='main-container'>
+    <MainContainer className='main-container' id='main-container'>
       <Cursor />
       <Menu init={init} />
       <LandingPage setInit={setInit} init={init} />

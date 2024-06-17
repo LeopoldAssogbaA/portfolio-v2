@@ -1,12 +1,10 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/all';
 import gsap from 'gsap';
 import styled from 'styled-components';
-
-
 import SplitType from 'split-type'
 import {
   Halftone,
@@ -16,6 +14,7 @@ import {
   LandingPageContainer,
   Work
 } from './styled';
+import { useRouter } from 'next/navigation';
 
 export const Char = styled.span`
   display: inline-block;
@@ -25,12 +24,14 @@ export const Char = styled.span`
   transform: translate(0px, 0px);
 `;
 
+// FIXME: move to index
 gsap.registerPlugin(ScrollTrigger);
 
 const LandingPage: React.FC<{ setInit: (init: boolean) => void, init: boolean }> = ({ setInit, init }) => {
   const revealTimeline = gsap.timeline();
   const heartBeatTimeline = gsap.timeline();
   const heartBeatTimelineMoove = gsap.timeline();
+  const router = useRouter();
 
   useGSAP(() => {
     if (init) {
@@ -42,9 +43,10 @@ const LandingPage: React.FC<{ setInit: (init: boolean) => void, init: boolean }>
       duration: 0,
     });
 
-    gsap.to("html", {
-      overflow: "hidden",
-    });
+    // FIXME: add after the page is scrollToTop
+    // gsap.to("html", {
+    //   overflow: "hidden",
+    // });
 
     gsap.to(".name", {
       clipPath: "inset(0% 0% 0% -100%)",
@@ -263,13 +265,6 @@ const LandingPage: React.FC<{ setInit: (init: boolean) => void, init: boolean }>
       ease: "back.out(1)",
     });
   }
-
-  // RESET PAGE TO TOP ON LOAD
-  useEffect(() => {
-    const isBrowser = () => typeof window !== 'undefined';
-    if (!isBrowser()) return;
-    window.scrollTo({ top: 0 });
-  }, []);
 
   return (
     <LandingPageContainer className="landing-page">

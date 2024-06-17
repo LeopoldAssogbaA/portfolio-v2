@@ -32,7 +32,7 @@ const SchoolTwo = styled.div`
   box-shadow: 0 0 80px rgba(0, 0, 0, 0.2);
   display: block;
   margin: 0 auto;
-  bottom: -10px;
+  bottom: -20px;
   left: 50%;
   width: 70vw;
   height: 70vh;
@@ -47,13 +47,12 @@ const School = () => {
         bottom: "-100%",
       },
       {
-        bottom: "-10px",
+        bottom: "-20px",
         scrollTrigger: {
           trigger: ".main-container",
-          start: "top+=45% bottom-=37.5%",
+          start: "top+=45% bottom-=20%",
           end: "top+=55% bottom-=37.5%",
           scrub: true,
-          markers: true,
           toggleActions: 'play none none none',
         },
       });
