@@ -64,8 +64,9 @@ export const LandingPageContainer = styled.section`
 
     scroll-snap-points-y: repeat(100vh);
     scroll-snap-type: y mandatory;
-    --i0: 0.25;
-    --j0: 0.15;
+
+    --j0: 0.25;
+    --i0: 0.66;
     --k0: 0;
     // --background: #52b600;
     background: #52b600;
@@ -80,8 +81,8 @@ export const LandingPageContainer = styled.section`
       grid-row: 1;
     }
 
-    --gradient-start: 0%;
-    --gradient-end: 0%;
+    --gradient-start: 4em;
+    --gradient-end: 10%;
     --map: radial-gradient(circle at calc(var(--i0) * 100%) calc(var(--j0) * 100%),
       #777 var(--gradient-start),
       #000 var(--gradient-end));

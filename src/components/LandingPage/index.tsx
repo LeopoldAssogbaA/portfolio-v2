@@ -71,6 +71,8 @@ const LandingPage: React.FC<{ setInit: (init: boolean) => void, init: boolean }>
       "background": "#000",
       "--gradient-start": "17%",
       "--gradient-end": "100%",
+      "--i0": "0.25",
+      "--j0": "0.15",
     },
     {
       "background": "#52b600",
