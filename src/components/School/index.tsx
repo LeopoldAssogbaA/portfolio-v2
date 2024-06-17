@@ -56,7 +56,11 @@ const School = () => {
           toggleActions: 'play none none none',
         },
       });
-    gsap.to(".school-two", {
+    gsap.fromTo(".school-two", 
+    {
+      transform: "translate(-50%,0) rotate3d(1, 0, 0, 90deg)",
+    },
+    {
       transform: "translate(-50%,0) rotate3d(1, 0, 0, 0deg)",
       scrollTrigger: {
         trigger: ".main-container",

@@ -109,6 +109,7 @@ const LandingPage: React.FC<{ setInit: (init: boolean) => void, init: boolean }>
       ease: "bounce",
       yoyo: true,
     });
+
     heartBeatTimeline.to(".landing-page", {
       "--gradient-start": "1.5em",
       "--gradient-end": "6%",
@@ -128,6 +129,7 @@ const LandingPage: React.FC<{ setInit: (init: boolean) => void, init: boolean }>
       ease: "bounce",
       yoyo: true,
     });
+    
     heartBeatTimeline.to(".landing-page", {
       "--gradient-start": "1.5em",
       "--gradient-end": "6%",
