@@ -63,12 +63,16 @@ const School = () => {
         start: "top+=55% bottom-=37.5%",
         end: "top+=65% bottom-=37.5%",
         scrub: true,
-        markers: true,
+        // markers: true,
         toggleActions: 'play none none none',
       },
     });
 
-    gsap.to(".school", {
+    gsap.fromTo(".school", 
+    {
+      x: "-50%"
+    },
+    {
       x: "-200%",
       stagger: 0.02,
       scrollTrigger: {
@@ -76,11 +80,9 @@ const School = () => {
         start: "top+=65% center",
         end: "top+=80% center",
         scrub: true,
-        // markers: true,
         toggleActions: 'play none none none',
       },
     });
-
   }, []);
 
   return (

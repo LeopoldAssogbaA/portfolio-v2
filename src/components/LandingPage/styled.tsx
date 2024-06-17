@@ -68,10 +68,11 @@ export const LandingPageContainer = styled.section`
     --i0: 0.25;
     --j0: 0.15;
     --k0: 0;
-    --background: #52b600;
+    // --background: #52b600;
+    background: #000;
     display: grid;
     height: 200vh;
-    background: var(--background);
+    // background: var(--background);
     cursor: none;
 
     *,

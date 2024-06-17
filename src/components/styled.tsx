@@ -5,4 +5,7 @@ export const MainContainer = styled.section`
   width: 100vw;
   height: 500vh;
   position: relative;
+  .school {
+    display: none;
+  }
 `;

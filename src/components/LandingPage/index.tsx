@@ -50,7 +50,7 @@ const LandingPage: React.FC<{ setInit: (init: boolean) => void, init: boolean }>
 
     gsap.fromTo(".name", 
     {
-      clipPath: "inset(0% 0% 0% 100%)",
+      clipPath: "inset(0% 100% 0% 0%)",
     },
     {
       clipPath: "inset(0% 0% 0% 0%)",
@@ -58,6 +58,7 @@ const LandingPage: React.FC<{ setInit: (init: boolean) => void, init: boolean }>
       duration: 1.2,
       ease: "elastic",
     });
+
     gsap.to(".work", {
       clipPath: "inset(0% 0% 0% -100%)",
       delay: 1.5,
@@ -65,9 +66,12 @@ const LandingPage: React.FC<{ setInit: (init: boolean) => void, init: boolean }>
       ease: "elastic",
     });
 
-
-    revealTimeline.to(".landing-page", {
-      "--background": "#52b600",
+    revealTimeline.fromTo(".landing-page", 
+    {
+      "background": "#000",
+    },
+    {
+      "background": "#52b600",
       "--gradient-start": "4em",
       "--gradient-end": "10%",
       "--j0": "0.40",
@@ -212,8 +216,10 @@ const LandingPage: React.FC<{ setInit: (init: boolean) => void, init: boolean }>
   // INIT PAGE WITH SCROLL
   const initPage = () => {
     setInit(true);
-    console.log('init');
     heartBeatTimeline.pause();
+    gsap.to(".school", {
+      display: "block",
+    });
     gsap.to("html", {
       overflow: "auto",
     });
